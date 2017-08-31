@@ -44,7 +44,8 @@ public class Collision {
         Vector2 circle = new Vector2(c1.x,c1.y);
         Vector2 rectangle = new Vector2(r1.x+(r1.width/2),r1.y+(r1.height/2)); //pegar o centro//
         
-        Vector2 diagonal = circle.sub(rectangle); //deferença entre os centros//
+        //Vector2 diagonal = circle.sub(rectangle); // sub modifica o próprio vetor
+        Vector2 diagonal = new Vector2(circle.x - rectangle.x, circle.y - rectangle.y); //deferença entre os centros//
         Vector2 campled = new Vector2( ((Math.abs(diagonal.x) > (r1.width/2)) ? (diagonal.x/Math.abs(diagonal.x))* (r1.width/2) : diagonal.x),
                                 ((Math.abs(diagonal.y) > (r1.height/2)) ? (diagonal.y/Math.abs(diagonal.y))* (r1.height/2) : diagonal.y));
         Vector2 nearestPoint = rectangle.add(campled); 
