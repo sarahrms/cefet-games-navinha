@@ -42,13 +42,13 @@ public class Collision {
     
     public static final boolean circleRectsOverlap(Circle c1, Rectangle r1) {
         Vector2 circle = new Vector2(c1.x,c1.y);
-        Vector2 rectangle = new Vector2(r1.x+r1.width,r1.y+r1.height); //pegar o centro//
+        Vector2 rectangle = new Vector2(r1.x+r1.width/2,r1.y+r1.height/2); //pegar o centro//
         
         Vector2 diagonal = rectangle.sub(circle); //deferença entre os centros//
         Vector2 campled = new Vector2( ((Math.abs(diagonal.x) > r1.width/2) ? (diagonal.x/Math.abs(diagonal.x))* r1.width/2 : diagonal.x),
                                 ((Math.abs(diagonal.y) > r1.height/2) ? (diagonal.y/Math.abs(diagonal.y))* r1.height/2 : diagonal.y));
         Vector2 nearestPoint = rectangle.add(campled); 
         float distance = circle.dst2(nearestPoint);
-        return (distance <=(c1.radius)*(c1.radius));
+        return (distance <= ((c1.radius)*(c1.radius)));
     }
 }
