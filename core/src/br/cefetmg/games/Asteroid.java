@@ -95,7 +95,7 @@ public class Asteroid implements Entity, Collidable {
         // Asteroid vs Vortex: circle vs circle
 
         if (other instanceof LaserShot) {
-            return Collision.rectsOverlap(bounds, other.getMinimumBoundingRectangle());
+            return Collision.circleRectsOverlap(circle, other.getMinimumBoundingRectangle());
         } else if (other instanceof Asteroid ||
                 other instanceof Ship ||
                 other instanceof VortexShot) {
